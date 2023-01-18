@@ -41,6 +41,15 @@ arc(325, 350, 50, 50, -HALF_PI, TWO_PI);
 vertex(325, 325);
 endShape(CLOSE);
 
+push();
+describeElement("necklace");
+stroke(235, 205, 59);
+strokeWeight(2);
+line(222, 325, 255, 346);
+line(290, 325, 255, 346);
+
+pop();
+
 describeElement("turtleneck shadow");
 fill(168, 152, 145);
 rect(212, 295, 88, 35, 8);
@@ -139,3 +148,8 @@ describeElement("right ear");
 fill(255, 212, 191);
 circle(358, 175, 36);
 pop();
+
+describeElement("earrings");
+fill(235, 205, 59);
+rect(148, 195, 7, 12, 2);
+rect(359, 195, 7, 12, 2);
