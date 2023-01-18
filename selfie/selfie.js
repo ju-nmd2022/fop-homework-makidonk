@@ -75,8 +75,8 @@ circle(260, 180, 200);
 push();
 describeElement("bangs right shadow");
 fill(193, 165, 143);
+translate(245, -53);
 rotate(0.65);
-translate(169, -192);
 ellipse(150, 100, 140, 65);
 pop();
 
@@ -114,16 +114,17 @@ ellipse(255, 240, 20, 15);
 push();
 describeElement("bangs right");
 fill(95, 73, 56);
+translate(250, -59);
 rotate(0.65);
-translate(170, -200);
 ellipse(150, 100, 150, 70);
 pop();
 
 push();
 describeElement("bangs left");
 fill(95, 73, 56);
+translate(20, 108);
 rotate(-0.65);
-translate(-50, 100);
+
 ellipse(140, 110, 150, 70);
 pop();
 
