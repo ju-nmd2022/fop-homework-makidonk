@@ -43,10 +43,31 @@ endShape(CLOSE);
 
 push();
 describeElement("necklace");
-stroke(235, 205, 59);
-strokeWeight(2);
+//shadow
+push();
+translate(-3, 0);
+stroke(188, 172, 165);
+strokeWeight(1.5);
 line(222, 325, 255, 346);
 line(290, 325, 255, 346);
+fill(168, 152, 145);
+noStroke();
+beginShape();
+vertex(255, 346);
+bezierVertex(245, 355, 265, 355, 255, 346);
+endShape();
+pop();
+//necklace
+stroke(235, 205, 59);
+strokeWeight(1.5);
+line(222, 325, 255, 346);
+line(290, 325, 255, 346);
+fill(235, 205, 59);
+noStroke();
+beginShape();
+vertex(255, 346);
+bezierVertex(245, 355, 265, 355, 255, 346);
+endShape();
 
 pop();
 
@@ -89,6 +110,28 @@ rotate(0.65);
 ellipse(150, 100, 140, 65);
 pop();
 
+//eyebrows
+push();
+translate(0, -1);
+fill(82, 63, 48);
+push();
+translate(2, 0);
+beginShape();
+vertex(274, 147);
+bezierVertex(300, 146, 277, 146, 323, 145);
+bezierVertex(272, 136, 308, 137, 274, 140);
+endShape();
+pop();
+push();
+translate(-3, 0);
+beginShape();
+vertex(238, 147);
+bezierVertex(183, 146, 221, 134, 182, 148);
+bezierVertex(209, 133, 194, 138, 238, 140);
+endShape();
+pop();
+pop();
+
 describeElement("eyes");
 fill(255, 255, 255);
 circle(211, 175, 45);
@@ -117,8 +160,23 @@ fill(255, 212, 191);
 ellipse(257, 200, 20, 20);
 
 describeElement("mouth");
+push();
+translate(-3, -1);
 fill(222, 173, 148);
-ellipse(255, 240, 20, 15);
+beginShape();
+vertex(280, 237);
+bezierVertex(276, 251, 244, 251, 240, 237);
+endShape();
+/*
+fill(222, 173, 148);
+beginShape();
+vertex(240,237);
+bezierVertex(255,230,260,235,260,235);
+bezierVertex(260,235,270,230,280,237);
+bezierVertex(273,240,248,240,240,237);
+endShape();
+*/
+pop();
 
 push();
 describeElement("bangs right");
@@ -153,3 +211,11 @@ describeElement("earrings");
 fill(235, 205, 59);
 rect(148, 195, 7, 12, 2);
 rect(359, 195, 7, 12, 2);
+
+//hairstrand
+fill(95, 73, 56);
+beginShape();
+vertex(255, 99);
+bezierVertex(230, 160, 210, 170, 165, 163);
+bezierVertex(220, 160, 220, 160, 250, 99);
+endShape();
