@@ -167,15 +167,7 @@ beginShape();
 vertex(280, 237);
 bezierVertex(276, 251, 244, 251, 240, 237);
 endShape();
-/*
-fill(222, 173, 148);
-beginShape();
-vertex(240,237);
-bezierVertex(255,230,260,235,260,235);
-bezierVertex(260,235,270,230,280,237);
-bezierVertex(273,240,248,240,240,237);
-endShape();
-*/
+
 pop();
 
 push();
