@@ -1,98 +1,158 @@
-translate(200, 200);
-let x = 0;
+/*let x = 0;
 let y = 0;
-let s = 0.5;
-let speech = "hello";
+let s = 1;
+translate(200, 200);
 rotate(0);
-
 scale(s);
-describe("emoji face");
-describeElement("shadow face");
-noStroke();
-fill(200, 100, 0);
-circle(x, y, 250);
-describeElement("face");
-noStroke();
-fill(255, 255, 0);
-circle(x, y, 230);
+*/
+function emoji(x, y, s) {
+  //face
+  strokeWeight(10 * s);
+  stroke(200, 100, 0);
+  fill(255, 255, 0);
+  circle(x, y, 230 * s);
 
-describeElement("blush");
-fill(255, 130, 150);
-ellipse(x + 70, y + 10, 50, 25);
-ellipse(x - 70, y + 10, 50, 25);
-
-function heart(x, y) {
+  //blush
   noStroke();
-  fill(255, 0, 0);
-  circle(x + 70, y - 110, 40);
-  circle(x + 105, y - 110, 40);
-  circle(x + 83, y - 100, 20);
-  triangle(x + 57, y - 95, x + 118, y - 95, x + 87, y - 60);
+  fill(255, 130, 150);
+  ellipse(x + 70 * s, y + 10 * s, 50 * s, 25 * s);
+  ellipse(x - 70 * s, y + 10 * s, 50 * s, 25 * s);
+
+  //hearts
+  function heart(x, y) {
+    noStroke();
+    fill(255, 0, 0);
+    circle(x + 70 * s, y - 110 * s, 40 * s);
+    circle(x + 105 * s, y - 110 * s, 40 * s);
+    circle(x + 83 * s, y - 100 * s, 20 * s);
+    triangle(
+      x + 57 * s,
+      y - 95 * s,
+      x + 118 * s,
+      y - 95 * s,
+      x + 87 * s,
+      y - 60 * s
+    );
+  }
+  heart(x, y);
+  heart(x - 200 * s, y + 145 * s);
+  heart(x + 20 * s, y + 170 * s);
+
+  //eyes
+  push();
+  translate(4 * s, 0);
+  push();
+  stroke(200, 90, 0);
+  strokeWeight(13 * s);
+  curve(
+    x - 50 * s,
+    y + 50 * s,
+    x + 20 * s,
+    y - 10 * s,
+    x + 60 * s,
+    y - 5 * s,
+    x + 70 * s,
+    y + 20 * s
+  );
+  translate(90 * s, 0);
+  curve(
+    x - 50 * s,
+    y + 50 * s,
+    x - 120 * s,
+    y - 10 * s,
+    x - 160 * s,
+    y - 5 * s,
+    x - 170 * s,
+    y + 20 * s
+  );
+  pop();
+
+  //mouth
+  push();
+  stroke(200, 90, 0);
+  fill(200, 90, 0);
+  strokeWeight(0);
+  translate(15 * s, 0);
+  curve(
+    x - 110 * s,
+    y - 210 * s,
+    x - 55 * s,
+    y + 40 * s,
+    x + 15 * s,
+    y + 40 * s,
+    x + 40 * s,
+    y - 260 * s
+  );
+  stroke(200, 90, 0);
+  fill(255, 255, 0);
+  strokeWeight(0);
+  curve(
+    x - 110 * s,
+    y - 50 * s,
+    x - 55 * s,
+    y + 40 * s,
+    x + 15 * s,
+    y + 40 * s,
+    x + 40 * s,
+    y - 50 * s
+  );
+  pop();
+
+  //eyebrows
+  strokeWeight(8 * s);
+  noFill();
+  stroke(200, 90, 0);
+  translate(5 * s, 0);
+  curve(
+    x - 50 * s,
+    y - 20 * s,
+    x + 20 * s,
+    y - 50 * s,
+    x + 70 * s,
+    y - 40 * s,
+    x + 150 * s,
+    y + 20 * s
+  );
+  push();
+  translate(480 * s, 0);
+  curve(
+    x - 450 * s,
+    y - 20 * s,
+    x - 520 * s,
+    y - 50 * s,
+    x - 570 * s,
+    y - 40 * s,
+    x - 650 * s,
+    y + 20 * s
+  );
+  pop();
+  pop();
 }
 
-//hearts
-heart(0, 0);
-heart(-200, 145);
-heart(20, 170);
+/* bigger or smaller */
+function draw() {
+  clear();
+  emoji(width / 2, height / 2, Math.max(0.1, mouseX / width));
+}
 
-describeElement("eyes");
-push();
-translate(4, 0);
-push();
-stroke(200, 90, 0);
-strokeWeight(13);
-curve(x - 50, y + 50, x + 20, y - 10, x + 60, y - 5, x + 70, y + 20);
-translate(90, 0);
-curve(x - 50, y + 50, x - 120, y - 10, x - 160, y - 5, x - 170, y + 20);
-pop();
+/* animation or drawing
+let x = 0;
+let s = 0.5;
+let y = 0;
+let emojiRotation = 0;
+function draw() {
+  clear();
+  push();
+  translate(x, y);
+  rotate(emojiRotation);
+  emoji(mouseX, mouseY, s);
+  pop();
 
-describeElement("mouth");
-push();
-stroke(200, 90, 0);
-fill(200, 90, 0);
-strokeWeight(0);
-translate(15, 0);
-curve(x - 110, y - 210, x - 55, y + 40, x + 15, y + 40, x + 40, y - 260);
-stroke(200, 90, 0);
-fill(255, 255, 0);
-strokeWeight(0);
-curve(x - 110, y - 50, x - 55, y + 40, x + 15, y + 40, x + 40, y - 50);
-pop();
+  if (s > 0) {
+    s = s - 0.006;
+  }
+  x = x + 2;
+  y = x + 1; 
 
-describeElement("eyebrows");
-strokeWeight(8);
-noFill();
-stroke(200, 90, 0);
-translate(5, 0);
-curve(x - 50, y - 20, x + 20, y - 50, x + 70, y - 40, x + 150, y + 20);
-push();
-strokeWeight(8);
-noFill();
-stroke(200, 90, 0);
-translate(480, 0);
-curve(x - 450, y - 20, x - 520, y - 50, x - 570, y - 40, x - 650, y + 20);
-pop();
-pop();
-
-push();
-translate(-180, -230);
-//speech bubble
-strokeWeight(1);
-stroke(0, 0, 0);
-fill(255, 255, 255);
-beginShape();
-vertex(115, 110);
-vertex(100, 80);
-vertex(60, 80);
-bezierVertex(10, 80, 10, 20, 60, 20);
-vertex(200, 20);
-bezierVertex(250, 20, 250, 80, 200, 80);
-vertex(125, 80);
-vertex(115, 110);
-endShape();
-noStroke();
-textSize(40);
-textFont("Courier");
-fill(255, 0, 0);
-text(speech, 55, 62);
-pop();
+  emojiRotation = emojiRotation + 0.03;
+}*/

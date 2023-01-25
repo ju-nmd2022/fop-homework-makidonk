@@ -1,0 +1,82 @@
+[
+  {
+    "kind": 1,
+    "language": "markdown",
+    "value": "# Welcome to your p5.js Notebook"
+  },
+  {
+    "kind": 1,
+    "language": "markdown",
+    "value": "we want to create a flappy bird type game with a bee that has to avoid windmills and barns\r\n\r\nand if we have time the ufo should be able to absuct cows.\r\n\r\n## planning\r\n- first draw the ufo\r\n- draw the background\r\n- draw the windmill\r\n- draw the barn\r\n\r\nthe barn and windmill must be able to move to the left"
+  },
+  {
+    "kind": 2,
+    "language": "javascript",
+    "value": "function setup() {\r\n  window.createCanvas(600, 300);\r\n  background(255,255,255);\r\n}"
+  },
+  {
+    "kind": 1,
+    "language": "markdown",
+    "value": "## draw the ufo\r\ni want a function with the x and y coordinates to controll the position of it"
+  },
+  {
+    "kind": 2,
+    "language": "javascript",
+    "value": "\r\nfunction bee(y) {\r\n    \r\n    push();\r\n    scale(0.7);\r\n    stroke(\"black\");\r\n    noFill();\r\n    bezier(166,y-13,166,y-40,176,y-50,186,y-54);\r\n    strokeWeight(5);\r\n    stroke(\"black\");\r\n    line(118,y,110,y);\r\n    noStroke();\r\n    fill(\"yellow\");\r\n    ellipse(150, y, 60, 40);\r\n    strokeWeight(10);\r\n    stroke(\"black\");\r\n    line(147, y - 19, 147, y + 19);\r\n    line(130, y - 14, 130, y + 14);\r\n    fill(\"white\");\r\n    stroke(\"black\");\r\n    strokeWeight(1);\r\n    ellipse(165,y,20);\r\n    fill(\"black\");\r\n    ellipse(170,y,5);\r\n    noFill();\r\n    bezier(170,y-13,170,y-40,180,y-50,190,y-50);\r\n    fill(\"black\");\r\n    ellipse(190,y-50,4);\r\n    ellipse(186,y-54,3);\r\n    pop();\r\n    \r\n}\r\nfunction draw(){\r\n    background(255,255,255);\r\n    bee(150,beeY);\r\n}"
+  },
+  {
+    "kind": 1,
+    "language": "markdown",
+    "value": "## draw the background\r\nThe sky will be pink and the ground should be purple"
+  },
+  {
+    "kind": 2,
+    "language": "javascript",
+    "value": "function scenery() {\r\n    push();\r\n    noStroke();\r\n    background(\"pink\");\r\n    fill(\"green\");\r\n    rect(0,270,600,200);\r\n    pop();\r\n}\r\n\r\n\r\nfunction draw(){\r\n    scenery();\r\n    bee(150,beeY);\r\n}"
+  },
+  {
+    "kind": 1,
+    "language": "markdown",
+    "value": "## Draw the obstacles\r\nthe flower will be animated and should have different heights and position provided as parameters."
+  },
+  {
+    "kind": 2,
+    "language": "javascript",
+    "value": "//flower!!!!!!!!!!!!\r\nlet flowerX = 600;\r\nlet flowerY = 200;\r\n\r\n\r\nfunction flower(flowerX,flowerY) {\r\npush();\r\nscale(0.8);\r\nlet x = 0;\r\nlet y = 0;\r\nlet r = 1;\r\ntranslate(flowerX, flowerY);\r\n\r\n//shaft\r\nstrokeWeight(10);\r\nstroke(\"lightgreen\");\r\nline(x, y, x, 250);\r\nnoStroke();\r\n//middle\r\nfill(\"yellow\");\r\nellipse(x, y, 30);\r\n//pettals\r\nfunction pettals(x, y, r, plusX, plusY) {\r\n  push();\r\n  fill(\"white\");\r\n  translate(x + plusX, y + plusY);\r\n  rotate(r);\r\n  ellipse(x, y, 50, 30);\r\n  pop();\r\n  \r\n  // ROTATING?\r\n}\r\npettals(x, y, 0.8, 28, 28);\r\npettals(x, y, 1.5, 0, 39);\r\npettals(x, y, -0.8, -28, 28);\r\npettals(x, y, 3, -39, 2);\r\npettals(x, y, -3, 39, 2);\r\npettals(x, y, 1.5, 0, -39);\r\npettals(x, y, -0.8, 28, -28);\r\npettals(x, y, 0.8, -27, -28);\r\n\r\n\r\nnoStroke();\r\nfill(\"lightpink\");\r\nellipse(-40, -160, 35);\r\nellipse(40, -160, 35);\r\nrect(-40,-177.5,80,35);\r\n\r\nellipse(-20, -180, 30);\r\nellipse(20, -180, 30);\r\nrect(-20,-195,35,20);\r\n\r\nellipse(0,-195,35);\r\npop();\r\n}\r\n\r\n\r\nfunction draw(){\r\n    scenery();\r\n    bee(150,beeY);\r\n    flower(flowerX,flowerY);\r\n}"
+  },
+  {
+    "kind": 1,
+    "language": "markdown",
+    "value": "## Make the flower move to the left\r\nwant to make the flower move with a specific speed every frame"
+  },
+  {
+    "kind": 2,
+    "language": "javascript",
+    "value": "\r\n\r\nfunction draw(){\r\n    scenery();\r\n    bee(150,beeY);\r\n    flower(flowerX,flowerY);\r\n\r\n    flowerX = flowerX - 1;\r\n}"
+  },
+  {
+    "kind": 1,
+    "language": "markdown",
+    "value": "## move the bee\r\n\r\ni want to add some gravity to make it fall down"
+  },
+  {
+    "kind": 2,
+    "language": "javascript",
+    "value": "let gravity = 0.2;\r\nlet beeY = 150;\r\n\r\nfunction draw(){\r\n    scenery();\r\n    bee(150,beeY);\r\n    flower(flowerX,flowerY);\r\n    flowerX = flowerX - 1;\r\n    beeY = beeY + gravity;\r\n    gravity = gravity + 0.09;\r\n    \r\n}"
+  },
+  {
+    "kind": 1,
+    "language": "markdown",
+    "value": "## Making the bee move upwards on click\r\nI need to do an onclick function that makes the beeY - maybe 50 over a time of maybe 0.2s. \r\n"
+  },
+  {
+    "kind": 2,
+    "language": "javascript",
+    "value": "function draw(){\r\n    scenery();\r\n    bee(150,beeY);\r\n    flower(flowerX,flowerY);\r\n    flowerX = flowerX - 2;\r\n    beeY = beeY + gravity;\r\n    gravity = gravity + 0.12;\r\n}\r\n\r\nfunction mousePressed() {\r\n    beeY = beeY - 70;\r\n    gravity = 0.2;\r\n    \r\n}"
+  },
+  {
+    "kind": 1,
+    "language": "markdown",
+    "value": "## Make more objects appear\r\nnow i want the flower and clouds to appear every 300 pixels (ish) and the Y positions should be between\r\nvar d = dist(var1.x,var1.y,var2.x,var2.y);\r\nif (d< radius of b + radius of flower) {\r\n    die\r\n}"
+  }
+]
