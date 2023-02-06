@@ -6,7 +6,7 @@ background(255, 255, 255);
 while (x < width) {
   line(x, 0, x, height);
   x = x + 20;
-  
+
 }
 
 while (y < height) {

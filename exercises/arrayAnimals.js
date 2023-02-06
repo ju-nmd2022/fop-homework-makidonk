@@ -1,13 +1,10 @@
 const array = ["😊", "😂", "❤️", "😍", "👌"];
 
-function reversing(array) {
-  let reversedArray = [];
-  //take in one lastIndex and make it length - that index 
-  //and make it newindex
-
-for (let lastIndex in array) {
-
+function randomizing(array) {
+  for (i = 0 ; i < array.length; i++) {
+    const randomPlace = Math.floor(Math.random()*array.length);
+    array[i] = array[randomPlace];
+  }
+  return(array);
 }
-
-  return reversedArray;
-}
+console.log(randomizing(array));
