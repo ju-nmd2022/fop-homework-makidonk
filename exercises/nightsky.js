@@ -16,6 +16,6 @@ function draw() {
   for (let star of stars) {
     fill(255, 255, 255, Math.abs(Math.sin(star.alpha)) * 355);
     ellipse(star.x, star.y, 3);
-    star.alpha = star.alpha + 0.09;
+    star.alpha = star.alpha + 0.02;
   }
 }
