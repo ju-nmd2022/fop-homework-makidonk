@@ -21,6 +21,7 @@ function displayPosts() {
   }
 }
 
+
 function createPostElement(post) {
   const articleElement = document.createElement("article");
   articleElement.classList.add("post");
